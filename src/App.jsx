@@ -1,8 +1,7 @@
-import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
-import Service from "./components/Service";
+import Services from "./components/Services";
 
 const App = () => {
   return (
@@ -11,7 +10,7 @@ const App = () => {
       <div className="pl-48">
         <Home />
         <About />
-        <Service />
+        <Services />
       </div>
     </div>
   );
