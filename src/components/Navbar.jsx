@@ -24,7 +24,7 @@ const Navbar = () => {
             </a>
           </li>
           <li className="pl-4 py-2 text-gray-300 hover:bg-gray-700">
-            <a href="#" className="block">
+            <a href="#skills" className="block">
               Skills
             </a>
           </li>
