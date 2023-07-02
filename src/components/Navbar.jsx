@@ -2,8 +2,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div>
-      <nav className="bg-gray-800 w-52 h-screen">
+    
+      <nav className="bg-gray-800 w-40 min-h-full fixed top-0 z-50">
         <div className="flex items-center justify-center h-16">
           <span className="text-white text-xl font-semibold">Logo</span>
         </div>
@@ -14,13 +14,13 @@ const Navbar = () => {
             </a>
           </li>
           <li className="pl-4 py-2 text-gray-300 hover:bg-gray-700">
-            <a href="#" className="block">
+            <a href="#about" className="block">
               About
             </a>
           </li>
           <li className="pl-4 py-2 text-gray-300 hover:bg-gray-700">
-            <a href="#" className="block">
-              Service
+            <a href="#services" className="block">
+              Services
             </a>
           </li>
           <li className="pl-4 py-2 text-gray-300 hover:bg-gray-700">
@@ -40,7 +40,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-    </div>
+    
   );
 };
 

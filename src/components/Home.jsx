@@ -2,8 +2,8 @@ import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 const Home = () => {
   return (
-    <div className="grid grid-cols-2 gap-6 mt-40">
-      <div className="ml-5 space-y-3">
+    <div className="grid grid-cols-2 gap-6 mt-40 items-center">
+      <div className="space-y-3">
         <p>MERN Stack Developer</p>
         <h1 className="text-4xl font-bold">Hi, I am</h1>
         <h1 className="text-5xl font-bold">Mustaqim Khan</h1>
@@ -13,16 +13,16 @@ const Home = () => {
           passionate about creating dynamic and user-friendly websites using
           MongoDB.
         </p>
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
-          See My Resume
-        </button>
+        <a href="mailto:mustaqimkhanbd@gmail.com" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
+          Hire Me
+        </a>
         <h2 className="text-lg font-bold">Find With Me</h2>
         <ul className="flex gap-6">
           <li className="p-3 bg-purple-700 rounded-full">
-            <FaLinkedin className="h-6 w-6 text-blue-500" />
+            <a href="https://www.linkedin.com/in/mustaqimbd/" target="_blank" rel="noreferrer"><FaLinkedin className="h-6 w-6 text-blue-500" /></a>
           </li>
           <li className="p-3 bg-purple-700 rounded-full">
-            <FaWhatsapp className="h-6 w-6 text-blue-500" />
+          <a href="https://wa.me/8801728781726" target="_blank" rel="noreferrer"><FaWhatsapp className="h-6 w-6 text-blue-500" /></a>
           </li>
         </ul>
       </div>
