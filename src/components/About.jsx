@@ -33,7 +33,7 @@ const About = () => {
           <a
             href="Mustaqim Khan's Resume.pdf"
             download
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-[204px] shadow-lg flex gap-2 items-center justify-center"
+            className="bg-[#3CBC85] hover:bg-[#2bc582] text-white font-bold py-2 px-4 rounded-full w-[204px] shadow-lg flex gap-2 items-center justify-center"
           >
             Download Resume <FaFileDownload className="h-6 w-6" />
           </a>

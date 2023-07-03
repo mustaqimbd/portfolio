@@ -13,16 +13,16 @@ const Home = () => {
           passionate about creating dynamic and user-friendly websites using
           MongoDB.
         </p>
-        <a href="mailto:mustaqimkhanbd@gmail.com" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
+        <a href="mailto:mustaqimkhanbd@gmail.com" className="bg-[#3CBC85] hover:bg-[#2bc582]  text-white font-bold py-2 px-4 rounded-full shadow-lg">
           Hire Me
         </a>
         <h2 className="text-lg font-bold">Find With Me</h2>
-        <ul className="flex gap-6">
-          <li className="p-3 bg-purple-700 rounded-full">
-            <a href="https://www.linkedin.com/in/mustaqimbd/" target="_blank" rel="noreferrer"><FaLinkedin className="h-6 w-6 text-blue-500" /></a>
+        <ul className="flex gap-6 text-white">
+          <li className="p-3 bg-[#3CBC85] rounded-full">
+            <a href="https://www.linkedin.com/in/mustaqimbd/" target="_blank" rel="noreferrer"><FaLinkedin className="h-6 w-6" /></a>
           </li>
-          <li className="p-3 bg-purple-700 rounded-full">
-          <a href="https://wa.me/8801728781726" target="_blank" rel="noreferrer"><FaWhatsapp className="h-6 w-6 text-blue-500" /></a>
+          <li className="p-3 bg-[#3CBC85] rounded-full">
+          <a href="https://wa.me/8801728781726" target="_blank" rel="noreferrer"><FaWhatsapp className="h-6 w-6" /></a>
           </li>
         </ul>
       </div>
