@@ -1,5 +1,6 @@
 import config from "@/config/config";
 import { CustomData, MetaCAPIEventPayload, UserData } from "./capi/capi.types";
+import { sendMetaCAPIEvent } from "./capi/capi.actions";
 import {
   cleanObj,
   getFbc,
@@ -17,7 +18,7 @@ import {
   resolveEventId,
   splitFullName,
 } from "./event.helpers";
-import { EventParameter, META_EVENT_MAP } from "./event.types";
+import { EventParameter } from "./event.types";
 import { buildGTMEventPayload } from "./gtm/gtm.builder";
 import { GTMEventPayload } from "./gtm/gtm.types";
 import { sendGTMEvent } from "@next/third-parties/google";
@@ -228,44 +229,9 @@ const eventHandler = async (eventData: EventParameter) => {
 
   // 5. Send to the server-side tracking endpoint for Meta CAPI
   try {
-    const pixelIds = config.facebookPixelId;
-    const tokens = config.facebookAccessToken;
-
-    if (pixelIds.length > 0 && tokens.length > 0) {
-      // Prepare the payload for CAPI (using hashed data and mapped event name)
-      const capiPayload = {
-        ...payload,
-        event_name: META_EVENT_MAP[event_name] || event_name,
-      };
-
-      const reqBody = {
-        data: [capiPayload],
-        ...(config.facebookTestEventCode && {
-          test_event_code: config.facebookTestEventCode,
-        }),
-      };
-
-      await Promise.all(
-        pixelIds.map(async (pixelId, index) => {
-          const token = tokens[index]?.trim();
-          const pId = pixelId.trim();
-          if (!pId || !token) return;
-
-          const fbCApiBaseUrl = `https://graph.facebook.com/v25.0/${pId}/events?access_token=${token}`;
-
-          try {
-            await fetch(fbCApiBaseUrl, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(reqBody),
-            });
-          } catch (err) {
-            // eslint-disable-next-line no-console
-            console.error(`CAPI error for Pixel ${pId}:`, err);
-          }
-        })
-      );
-    }
+    // Call the Server Action to send data to Meta CAPI securely
+    // This avoids exposing FACEBOOK_ACCESS_TOKEN to the browser and resolves env var visibility issues.
+    await sendMetaCAPIEvent(payload);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("CAPI general error", error);
