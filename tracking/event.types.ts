@@ -1,3 +1,17 @@
+export const META_EVENT_MAP: Record<string, string> = {
+    page_view: "PageView",
+    view_category: "ViewCategory",
+    view_content: "ViewContent",
+    search: "Search",
+    add_to_cart: "AddToCart",
+    initiate_checkout: "InitiateCheckout",
+    add_payment_info: "AddPaymentInfo",
+    purchase: "Purchase",
+    purchase_cancel: "PurchaseCancel",
+    refund: "Refund",
+    refund_issued: "RefundIssued",
+} as const;
+
 /**
  * Shared tracking event names used by both Meta CAPI and GTM.
  * All event names follow snake_case as per GA4 convention.
@@ -42,16 +56,17 @@ export type EventParameter = {
   event_id?: string;
   fullName?: string; // Raw full name (will be split into fn and ln automatically)
   // Raw user identity (will be SHA256 hashed before transmission)
-  em?: string; // Raw email
-  ph?: string; // Raw phone
   fn?: string; // Raw first name
   ln?: string; // Raw last name
+  db?: string; // Raw date of birth
+  ge?: string; // Raw gender
+  em?: string; // Raw email
+  ph?: string; // Raw phone
   ct?: string; // Raw city
   st?: string; // Raw state
   zp?: string; // Raw zip
+  upazila_id?: string; // Upazila ID for automatic zip code resolution
   country?: string; // Raw country
-  db?: string; // Raw date of birth
-  ge?: string; // Raw gender
   external_id?: string; // Raw external ID
   fb_login_id?: string; // Facebook Login ID
   fbc?: string; // Facebook Click ID

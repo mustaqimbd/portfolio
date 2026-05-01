@@ -26,7 +26,10 @@ export const buildGTMEventPayload = (
   ].includes(payload.event_name);
 
   return {
-    event: payload.event_name,
+    event:
+      payload.event_name === "page_view"
+        ? "custom_page_view"
+        : payload.event_name,
     eventModel: cleanObj({
       event_id: payload.event_id,
       event_time: payload.event_time,
@@ -42,12 +45,12 @@ export const buildGTMEventPayload = (
           country: rawEventData.country,
         }),
         // Advanced Matching Identifiers
+        gender: rawEventData.ge,
+        dob: rawEventData.db,
         external_id: rawEventData.external_id,
         fb_login_id: rawEventData.fb_login_id,
         fbc: rawEventData.fbc,
         fbp: rawEventData.fbp,
-        gender: rawEventData.ge,
-        dob: rawEventData.db,
       }),
       items:
         payload.custom_data?.contents && payload.custom_data.contents.length > 0
