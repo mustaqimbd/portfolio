@@ -2,9 +2,11 @@
 
 import Section from "./ui/Section";
 import { ExternalLink, Github } from "lucide-react";
+import eventHandler from "@/tracking/eventHandler";
 
 const projects = [
   {
+    id: "brmart-ecommerce",
     title: "BrMart eCommerce Platform",
     description: "A scalable eCommerce solution with SSR using Next.js 15, TypeScript, and Prisma. Includes product management, cart persistence, authentication, and admin dashboard.",
     image: "/project1.png", // Placeholder, user can replace
@@ -21,6 +23,7 @@ const projects = [
     }
   },
   {
+    id: "taskflow-saas",
     title: "TaskFlow SaaS",
     description: "Project management tool for remote teams with real-time updates and Kanban boards.",
     image: "/project2.png",
@@ -37,6 +40,7 @@ const projects = [
     }
   },
   {
+    id: "devlearn-lms",
     title: "DevLearn LMS",
     description: "Learning management system for coding bootcamps with video streaming and code playgrounds.",
     image: "/project3.png",
@@ -55,6 +59,23 @@ const projects = [
 ];
 
 export default function Projects() {
+  const handleProjectClick = (project: typeof projects[0], type: 'demo' | 'github') => {
+    eventHandler({
+      event_name: "view_content",
+      content_ids: [project.id],
+      content_name: project.title,
+      content_category: "Portfolio Project",
+      contents: [{
+        id: project.id,
+        name: project.title,
+        category: "Portfolio Project",
+        brand: type === 'demo' ? "Live Demo" : "Source Code"
+      }],
+      value: 1,
+      currency: "USD"
+    });
+  };
+
   return (
     <Section id="projects" className="bg-[#020617]">
       <div className="space-y-12">
@@ -112,10 +133,18 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-4">
-                  <a href={project.links.demo} className="flex items-center gap-2 text-white hover:text-indigo-400 transition-colors font-medium">
+                  <a 
+                    href={project.links.demo} 
+                    onClick={() => handleProjectClick(project, 'demo')}
+                    className="flex items-center gap-2 text-white hover:text-indigo-400 transition-colors font-medium"
+                  >
                     <ExternalLink className="w-4 h-4" /> View Live
                   </a>
-                  <a href={project.links.github} className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+                  <a 
+                    href={project.links.github} 
+                    onClick={() => handleProjectClick(project, 'github')}
+                    className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+                  >
                     <Github className="w-4 h-4" /> Source Code
                   </a>
                 </div>
@@ -125,5 +154,6 @@ export default function Projects() {
         </div>
       </div>
     </Section>
+
   );
 }
